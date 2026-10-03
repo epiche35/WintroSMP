@@ -1,0 +1,166 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Cinzel", "Cinzel Decorative", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* Natural atmospheric color palette */
+  /* 1. Deep Forest Greens */
+  --color-forest-deep: #07120d;
+  --color-forest-dark: #0d1e17;
+  --color-forest-moss: #173426;
+  --color-forest-canopy: #234b38;
+  --color-forest-emerald: #357256;
+  --color-forest-leaf: #4f9b77;
+
+  /* 2. Charcoal / Obsidian / Black */
+  --color-charcoal-void: #060807;
+  --color-charcoal-base: #0b0f0d;
+  --color-charcoal-surface: #121715;
+  --color-charcoal-elevated: #1a201d;
+
+  /* 3. Stone Gray */
+  --color-stone-border: #242c29;
+  --color-stone-muted: #4e5a55;
+  --color-stone-subtle: #798881;
+  --color-stone-light: #b4c0ba;
+
+  /* 4. Earthy Brown */
+  --color-earth-deep: #1c1510;
+  --color-earth-base: #2e2219;
+  --color-earth-warm: #4a382a;
+  --color-earth-timber: #755b44;
+
+  /* 5. Warm Cream / Gold */
+  --color-cream-base: #f4ede1;
+  --color-cream-muted: #d9cfbf;
+  --color-gold-pale: #e6ce8a;
+  --color-gold-base: #c59f4e;
+  --color-gold-glow: #e0b759;
+  --color-gold-dim: #735923;
+
+  /* 6. Diamond / Crystalline Accent (Restrained, not neon) */
+  --color-diamond-ice: #d8f5fc;
+  --color-diamond-base: #4cbcd6;
+  --color-diamond-deep: #1d697c;
+  --color-diamond-glow: rgba(76, 188, 214, 0.22);
+}
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--color-charcoal-void);
+  color: var(--color-cream-base);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+/* Subtle atmospheric backdrop utility */
+.ambient-fog-bg {
+  background-image: 
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(23, 52, 38, 0.35), transparent 70%),
+    radial-gradient(circle at 10% 40%, rgba(46, 34, 25, 0.25), transparent 50%),
+    radial-gradient(circle at 90% 60%, rgba(29, 105, 124, 0.12), transparent 45%),
+    radial-gradient(ellipse 60% 40% at 50% 100%, rgba(13, 30, 23, 0.4), transparent 70%);
+}
+
+/* Fine hairline stone borders */
+.hairline-stone {
+  border: 1px solid rgba(180, 192, 186, 0.12);
+}
+
+.hairline-stone-subtle {
+  border: 1px solid rgba(180, 192, 186, 0.07);
+}
+
+.hairline-gold {
+  border: 1px solid rgba(197, 159, 78, 0.3);
+}
+
+/* Custom restrained scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-charcoal-void);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-forest-moss);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-forest-canopy);
+}
+
+/* Atmospheric Environmental Animations */
+@keyframes sporeDrift {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(8px, -18px, 0);
+  }
+  100% {
+    transform: translate3d(-10px, -36px, 0);
+  }
+}
+
+@keyframes fogDriftSlow {
+  0% {
+    transform: translate3d(-2%, 0, 0);
+  }
+  50% {
+    transform: translate3d(2%, -4px, 0);
+  }
+  100% {
+    transform: translate3d(-2%, 0, 0);
+  }
+}
+
+@keyframes sunlightBreathe {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.04);
+  }
+}
+
+@keyframes lanternFlicker {
+  0%, 100% {
+    opacity: 0.75;
+  }
+  50% {
+    opacity: 0.95;
+  }
+}
+
+@keyframes redstonePulse {
+  0%, 100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
